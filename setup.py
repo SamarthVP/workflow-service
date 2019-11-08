@@ -27,7 +27,7 @@ setup(name='wes-service',
           'connexion >= 2.0.2, < 3',
           'ruamel.yaml >= 0.12.4, <= 0.15.77',
           'schema-salad',
-          'subprocess32==3.5.2'
+          'subprocess32==3.5.4'
                         ],
       entry_points={
           'console_scripts': ["wes-server=wes_service.wes_service_main:main",
