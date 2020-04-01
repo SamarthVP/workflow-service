@@ -48,6 +48,11 @@ class WESBackend(object):
 
     def collect_attachments(self, run_id=None):
         tempdir = tempfile.mkdtemp()
+        # Added a few select lines for a temporary solution to the fact that wes always stages to /tmp/tmp.../
+        # Ideally we could pass '/home/svpatel' as a flag but we would still need some way to name the directories to avoid race conditions, which is why I still use mkdtemp() at the moment
+        tempdir = "/home/svpatel" + tempdir
+        os.mkdir("/home/svpatel/tmp")
+        os.mkdir(tempdir)
         body = {}
         has_attachments = False
         for k, ls in iterlists(connexion.request.files):
